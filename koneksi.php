@@ -17,7 +17,7 @@ if (!$koneksi) {
 
 // Mendapatkan data dari API
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-   
+    // Query untuk mendapatkan data dari database
     $query = "SELECT * FROM tb_eletronik";  
 
     // Menjalankan query
@@ -75,18 +75,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
         echo json_encode(array('message' => 'Gagal mengupdate data'));
     }
 }
-
+// Menambahkan data melalui API
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-
+    // Mendapatkan data yang dikirim melalui query parameter
     $id_barang = $_GET['id_barang'];
 
-   
+    // Query untuk menghapus data dari database
     $query = "DELETE FROM tb_eletronik WHERE id_barang = '$id_barang'";
 
-  
+    // Menjalankan query
     $result = mysqli_query($koneksi, $query);
 
-   
+    // Memeriksa apakah data berhasil dihapus atau tidak
     if ($result) {
         echo json_encode(array('message' => 'Data berhasil dihapus'));
     } else {
